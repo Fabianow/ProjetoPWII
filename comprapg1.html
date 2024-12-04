@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="menu.css">
+    <link rel="script" href="barra.js">
+    <title>Torcida Style</title>
+</head>
+<body>
+    
+
+    <!--inicio da pagina de compra -->
+    <section class="main-wrap">
+        <button id="close-product" class="close-button">×</button>
+        <div class="product">
+            <div class="image-gallery">
+                <img id="product-img" src="" alt="Produto">
+            </div>
+            <div class="product-details">
+                <div class="details">
+                    <h2 id="product-name">Nome do Produto</h2>
+                    <h3 id="product-price">R$ 0,00</h3>
+                    <p>Detalhes do produto serão exibidos aqui.</p>
+                </div>
+                <div class="sizes">
+                    <form class="form">
+                        <div class="select-size">
+                            <h3>Tamanhos:</h3>
+                            <label for="sm">
+                                <input type="radio" name="size" id="sm">
+                                <span>P</span>
+                            </label>
+                            <label for="m">
+                                <input type="radio" name="size" id="m">
+                                <span>M</span>
+                            </label>
+                            <label for="lg">
+                                <input type="radio" name="size" id="lg">
+                                <span>G</span>
+                            </label>
+                            <label for="xl">
+                                <input type="radio" name="size" id="xl">
+                                <span>GG</span>
+                            </label>
+                            <label for="xxl">
+                                <input type="radio" name="size" id="xxl">
+                                <span>XG</span>
+                            </label>
+                        </div>   
+                    </form>
+                </div>
+                <!-- --> 
+                
+        
+                <div class="quantity">
+                    <div class="select-quantity">
+                        <h3>Quantidade:</h3>
+                        <input type="number" name="quantity" value="1">
+                    </div>
+                </div>
+                <div class="sub-btn">
+                    <button class="submit">Comprar</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    
+
+<script src="barra.js"></script>
+<script>
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            name: params.get('name'),
+            image: params.get('image'),
+            price: params.get('price')
+        };
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const productData = getQueryParams();
+    
+        // Atualiza os elementos na página
+        if (productData.name) {
+            document.getElementById('product-name').textContent = productData.name;
+            document.getElementById('product-img').src = productData.image;
+            document.getElementById('product-price').textContent = `R$ ${parseFloat(productData.price).toFixed(2)}`;
+        }
+    });
+    const product= document.getElementById('product');
+const closeProduct = document.getElementById('close-product');
+
+    product.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        product.style.display = 'none'; // Ocultar o modal
+    }
+});
+    </script>
+
+</body>
+</html>
